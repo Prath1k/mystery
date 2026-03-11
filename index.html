@@ -72,15 +72,15 @@
 
         /* Glassmorphism Card */
         .content-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.01); /* More transparent background */
+            backdrop-filter: blur(6px); /* Less blur to see watermark clearly */
+            -webkit-backdrop-filter: blur(6px); /* Less blur for safari */
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Fainter border */
             border-radius: 24px;
             padding: 3.5rem 2.5rem;
             max-width: 600px;
             width: 100%;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5); /* Keep shadow for depth */
             animation: slideUpFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
         }
@@ -189,6 +189,22 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Watermark Styles */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 9.5rem; /* Slightly decreased from 12rem */
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.2); /* Increased opacity to 20% */
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: -0.05em;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
@@ -204,11 +220,19 @@
                 padding: 2.5rem 1.5rem;
                 border-radius: 20px;
             }
+            
+            .watermark {
+                font-size: 6.5rem; /* Down from 8rem */
+            }
         }
 
         @media (max-width: 480px) {
             h1 {
                 font-size: 2rem;
+            }
+            
+            .watermark {
+                font-size: 4rem; /* Down from 5rem */
             }
         }
     </style>
@@ -223,6 +247,9 @@
 
     <!-- Overlay for depth and text contrast -->
     <div class="overlay"></div>
+
+    <!-- Background Watermark -->
+    <div class="watermark">Prathik Kontham</div>
 
     <div class="container">
         <div class="content-card">
